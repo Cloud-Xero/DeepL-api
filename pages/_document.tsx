@@ -1,13 +1,18 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import { createGetInitialProps } from "@mantine/next";
+import Document, { Html, Head, Main, NextScript } from "next/document";
 
-export default function Document() {
-  return (
-    <Html lang="en">
+const getInitialProps = createGetInitialProps();
+
+export default class _Document extends Document {
+  static getInitialProps = getInitialProps;
+
+  return() {
+    <Html lang="ja">
       <Head />
       <body>
         <Main />
-        <NextScript />
+        {/* <NextScript /> */}
       </body>
-    </Html>
-  )
+    </Html>;
+  }
 }
