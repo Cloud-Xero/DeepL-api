@@ -6,10 +6,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const translator = new deepl.Translator(authKey);
 
   const targetLang: deepl.TargetLanguageCode = "ja";
-  const result = await translator.translateText("Hello", null, targetLang);
+  console.log(req.body);
+  const result = await translator.translateText(
+    req.body["message"],
+    null,
+    targetLang
+  );
   console.log(result);
-
-  res.status(200).json(result.text);
+  res.status(200).json(result);
 };
 
 export default handler;
